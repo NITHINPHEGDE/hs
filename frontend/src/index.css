@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #14213D;
+  --color-gold: #C9962C;
+  --color-gold-light: #E8B923;
+  --color-oxblood: #14213D;
+  --color-ivory: #F6F1E4;
+  --color-cream-text: #EDE6D6;
+  --color-charcoal-text: #1C1A16;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Manrope', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal-text);
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+}
+
+.btn-shine:hover::before {
+  left: 125%;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.animate-float-slow {
+  animation: float 2.4s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 1.8s ease-in-out infinite;
+}
+
+@keyframes float-big {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float-big {
+  animation: float-big 1.4s ease-in-out infinite;
+}
+
+@keyframes circle-pop {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes check-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.success-circle {
+  animation: circle-pop 0.4s ease-out forwards;
+}
+
+.success-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: check-draw 0.4s 0.3s ease-out forwards;
+}
+
+html {
+  scroll-behavior: smooth;
+}
